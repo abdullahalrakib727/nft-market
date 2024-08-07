@@ -9,7 +9,7 @@ const Navbar = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <nav className="flexBetween w-full fixed z-10 p-4 flex-row border-b darK:bg-nft-dark bg-white dark:border-nft-black-1 border-nft-gray-1 ">
+    <nav className="flexBetween w-full fixed z-10 p-4 flex-row border-b darK:bg-nft-dark bg-white dark:border- nft-black-1 border-nft-gray-1 ">
       <div className="flex flex-1 flex-row justify-start">
         <Link href="/">
           <div className="flexCenter md:hidden cursor-pointer">
@@ -27,7 +27,10 @@ const Navbar = () => {
           </div>
         </Link>
         <Link href="/">
-          <div className="hidden md:flex" onClick={() => {}}>
+          <div
+            className="hidden md:flex"
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+          >
             <Image
               src={images.logo02}
               objectFit="contain"
