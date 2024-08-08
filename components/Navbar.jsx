@@ -44,18 +44,28 @@ const MenuItems = ({ isMobile, active, setActive }) => {
   );
 };
 
-const ButtonGroup = ({setActive, router}) => {
+const ButtonGroup = ({ setActive, router }) => {
   const hasconnected = true;
 
   return hasconnected ? (
-    <Button btnName="Create" classStyles="mx-2 rounded-xl "
- handleClick  = { ()=>{
-  setActive("Create")
-  router.push("/create-nft")
- }}
-    > </Button>
+    <Button
+      btnName="Create"
+      classStyles="mx-2 rounded-xl"
+      handleClick={() => {
+        setActive("Create");
+        router.push("/create-nft");
+      }}
+    >
+      {" "}
+    </Button>
   ) : (
-    <Button btnName="Connect" classStyles="mx-2 rounded-xl "> </Button>
+    <Button
+      btnName="Connect"
+      classStyles="mx-2 rounded-xl"
+      handleClick={() => {}}
+    >
+      {" "}
+    </Button>
   );
 };
 
@@ -63,6 +73,7 @@ const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const router = useRouter();
   const [active, setActive] = useState("Explore NFTs");
+  const [isOpen, setIsOpen] = useState(false);
 
   // ! Theme not working, will fix this later
 
@@ -100,6 +111,7 @@ const Navbar = () => {
           </div>
         </Link>
       </div>
+
       <div className="flex flex-initial flex-row justify-end">
         <div className="flex items-center mr-2">
           <input type="checkbox" className="checkbox" id="checkbox" />
@@ -112,12 +124,17 @@ const Navbar = () => {
             <div className="w-3 h-3 bg-white absolute rounded-full ball" />
           </label>
         </div>
-      </div>
-      <div className="md:hidden flex">
-        <MenuItems active={active} setActive={setActive} />
-        <div className="ml-4 ">
-          <ButtonGroup setActive={setActive} router={router}/>
+
+        <div className="md:hidden flex">
+          <MenuItems active={active} setActive={setActive} />
+          <div className="ml-4 ">
+            <ButtonGroup setActive={setActive} router={router} />
+          </div>
         </div>
+      </div>
+
+      <div className="hidden md:flex ml-2">
+        {isOpen ? <Image src={images.cross} /> : <Image src={images.menu} />}
       </div>
     </nav>
   );
