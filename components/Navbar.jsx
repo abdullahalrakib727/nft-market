@@ -134,7 +134,31 @@ const Navbar = () => {
       </div>
 
       <div className="hidden md:flex ml-2">
-        {isOpen ? <Image src={images.cross} /> : <Image src={images.menu} />}
+        {isOpen ? (
+          <Image
+            src={images.cross}
+            objectFit="contain"
+            width={20}
+            height={20}
+            alt="close"
+            onClick={() => {
+              setIsOpen(false);
+            }}
+            className={theme === "light" && "filter invert"}
+          />
+        ) : (
+          <Image
+            objectFit="contain"
+            width={25}
+            height={25}
+            alt="menu"
+            src={images.menu}
+            onClick={() => {
+              setIsOpen(true);
+            }}
+            className={theme === "light" && "filter invert"}
+          />
+        )}
       </div>
     </nav>
   );
