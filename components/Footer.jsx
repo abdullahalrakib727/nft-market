@@ -2,6 +2,20 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 import images from "../assets";
 import Button from "./Button";
+
+const FooterLinks = ({ heading, itmes }) => {
+  return (
+    <div className="flex-1 justify-start items-start">
+      <h3 className="font-poppins dark:text-white text-nft-black-1 font-semibold text-xl mb-10">
+        {heading}
+      </h3>
+      {itmes.map((item, index) => (
+        <p key={index}  className="font-poppins dark:text-white text-nft-black-1 font-normal text-base cursor-pointer dark:hover:text-nft-gray-1 hover:text-nft-black-1 my-3">{item}</p>
+      ))}
+    </div>
+  );
+};
+
 const Footer = () => {
   const { theme } = useTheme();
 
@@ -32,9 +46,25 @@ const Footer = () => {
               className="h-full flex-1 w-full dark:bg-nft-black-2 bg-white px-4 rounded-md dark:text-white text-nft-black-1 font-normal text-xs minlg:text-lg outline-none"
             />
             <div className="flex-initial">
-              <Button btnName="Email Me" classStyles="rounded-md"/>
+              <Button btnName="Email Me" classStyles="rounded-md" />
             </div>
           </div>
+        </div>
+
+        <div className="flex-1 flexBetweenStart flex-wrap ml-10 md:ml-0 md:mt-8">
+          <FooterLinks
+            heading="Cryptoket"
+            itmes={["Explore", "How it works", "Contact Us"]}
+          />
+          <FooterLinks
+            heading="Support"
+            itmes={[
+              "Help Cneter",
+              "Terms of Service",
+              "Legal",
+              "Priavcy Policy",
+            ]}
+          />
         </div>
       </div>
 
