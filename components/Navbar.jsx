@@ -71,10 +71,10 @@ const Navbar = () => {
   const [active, setActive] = useState("Explore NFTs");
   const [isOpen, setIsOpen] = useState(false);
 
-  // ! Theme not working, will fix this later
+  console.log({ theme });
 
   return (
-    <nav className="flexBetween w-full fixed z-10 p-4 flex-row border-b dark:bg-nft-dark bg-white dark:border- nft-black-1 border-nft-gray-1 ">
+    <nav className="flexBetween w-full fixed z-10 p-4 flex-row border-b dark:bg-nft-dark bg-white dark:border-nft-black-1 border-nft-gray-1 ">
       <div className="flex flex-1 flex-row justify-start">
         <Link href="/">
           <div className="flexCenter md:hidden cursor-pointer">
@@ -92,10 +92,7 @@ const Navbar = () => {
           </div>
         </Link>
         <Link href="/">
-          <div
-            className="hidden md:flex"
-            onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-          >
+          <div className="hidden md:flex">
             <Image
               src={images.logo02}
               objectFit="contain"
@@ -110,7 +107,12 @@ const Navbar = () => {
 
       <div className="flex flex-initial flex-row justify-end">
         <div className="flex items-center mr-2">
-          <input type="checkbox" className="checkbox" id="checkbox" />
+          <input
+            type="checkbox"
+            className="checkbox"
+            id="checkbox"
+            onChange={() => setTheme(theme === "light" ? "dark" : "light")}
+          />
           <label
             htmlFor="checkbox"
             className="flexBetween w-8 h-4 bg-black rounded-2xl p-1 relative label"
