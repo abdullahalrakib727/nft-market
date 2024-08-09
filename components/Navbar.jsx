@@ -21,7 +21,7 @@ const MenuItems = ({ isMobile, active, setActive }) => {
   };
   return (
     <ul
-      className={`list-none flexCenter flex-row${
+      className={`list-none flexCenter flex-row ${
         isMobile && "flex-col h-full"
       }`}
     >
@@ -159,6 +159,13 @@ const Navbar = () => {
             className={theme === "light" && "filter invert"}
           />
         )}
+        {
+          isOpen && <div className="">
+            <div className="flex-1 p-4">
+            <MenuItems active={active} setActive={setActive} isMobile/>
+            </div>
+          </div>
+        }
       </div>
     </nav>
   );
